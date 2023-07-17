@@ -31,16 +31,49 @@ const content = (
 //     </div>
 //   );
 // }
-const App = () => {
+// const App = () => {
+//   return (
+//     <div>
+//       <p className="text">Some React.js</p>
+//       <p className="text">
+//         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+//         pariatur unde. Assumenda dolorem iusto modi rem amet debitis laborum
+//         tenetur quae, quibusdam reprehenderit dolores! Ducimus est molestiae
+//         harum incidunt quas!
+//       </p>
+//     </div>
+//   );
+// };
+const Header = () => {
   return (
-    <div>
-      <p className="text">Some React.js</p>
+    <header>
+      <h1 className="text">Some React.js</h1>
+    </header>
+  );
+};
+const Content = () => {
+  return (
+    <>
       <p className="text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
         pariatur unde. Assumenda dolorem iusto modi rem amet debitis laborum
         tenetur quae, quibusdam reprehenderit dolores! Ducimus est molestiae
         harum incidunt quas!
       </p>
+      <p className="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+        pariatur unde. Assumenda dolorem iusto modi rem amet debitis laborum
+        tenetur quae, quibusdam reprehenderit dolores! Ducimus est molestiae
+        harum incidunt quas!
+      </p>
+    </>
+  );
+};
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Content />
     </div>
   );
 };
@@ -49,6 +82,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* {h1},{title},{content} */} <App />
+    {/* {h1},{title},{content} */}
+    <App />
+    {/* <Header />
+    <Content /> */}
   </React.StrictMode>
 );
