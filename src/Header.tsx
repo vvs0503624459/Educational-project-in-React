@@ -17,10 +17,25 @@ type Props = {
   title: string;
   year: number;
 };
-const Header = (props: Props) => {
+// const Header = (props: Props) => {
+//   console.log(props);
+//   return (
+//     <h1 className="text">
+//       Some {props.title}, Year {props.year}
+//     </h1>
+//   );
+// };
+// export default Header;
+
+// const user = {
+//     name: "Jack"
+
+// }
+// destructuring props
+const Header = ({ title, year }: Props) => {
   return (
     <h1 className="text">
-      Some {props.title}, Year {props.year}
+      Some {title}, Year {year}
     </h1>
   );
 };
