@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { Header } from "./Header";
 const title = React.createElement("h1", { id: "title" }, "Hello React");
 
 //
@@ -44,13 +44,7 @@ const content = (
 //     </div>
 //   );
 // };
-const Header = () => {
-  return (
-    <header>
-      <h1 className="text">Some React.js</h1>
-    </header>
-  );
-};
+
 const Content = () => {
   return (
     <>
@@ -69,12 +63,13 @@ const Content = () => {
     </>
   );
 };
+
 const App = () => {
   return (
-    <div className="App">
+    <React.Fragment>
       <Header />
       <Content />
-    </div>
+    </React.Fragment>
   );
 };
 const root = ReactDOM.createRoot(
