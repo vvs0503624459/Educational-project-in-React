@@ -6,9 +6,19 @@ type Props = {
 const Article = ({ title, description, author }: Props) => {
   //   console.log(Props);
   return (
-    <h1 className="text">
-      First {title}, Second {description}, Third {author}
-    </h1>
+    <div>
+      <h2
+        style={{
+          backgroundColor: "purple",
+          color: "white",
+          padding: "15px",
+        }}
+      >
+        First {title}
+      </h2>
+      <p> Second {description}</p>
+      <div> Third {author}</div>
+    </div>
   );
 };
 export default Article;
