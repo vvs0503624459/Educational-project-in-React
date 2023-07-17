@@ -33,6 +33,7 @@ type Props = {
 // }
 // destructuring props
 const Header = ({ title, year }: Props) => {
+  //   console.log(Props);
   return (
     <h1 className="text">
       Some {title}, Year {year}
