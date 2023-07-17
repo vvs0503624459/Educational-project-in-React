@@ -1,3 +1,5 @@
+import "./Article.scss";
+
 type Props = {
   title: string;
   description: string;
@@ -8,11 +10,12 @@ const Article = ({ title, description, author }: Props) => {
   return (
     <div>
       <h2
-        style={{
-          backgroundColor: "purple",
-          color: "white",
-          padding: "15px",
-        }}
+        //     style={{
+        //       backgroundColor: title === "News 1" ? "purple" : "green",
+        //       color: "white",
+        //       padding: "15px",
+        //     }}
+        className="article-title"
       >
         First {title}
       </h2>
