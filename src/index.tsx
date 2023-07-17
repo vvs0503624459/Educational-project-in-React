@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Header } from "./Header";
+import Header from "./Header";
 const title = React.createElement("h1", { id: "title" }, "Hello React");
 
 //
@@ -67,8 +67,9 @@ const Content = () => {
 const App = () => {
   return (
     <React.Fragment>
-      <Header />
+      <Header title="React" year={2023} />
       <Content />
+      <Header title="JS" year={2022} />
     </React.Fragment>
   );
 };
