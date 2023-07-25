@@ -20,13 +20,13 @@ const ProductList = (props: Props) => {
       </Typography>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6} md={4}>
-          <ProductListItem />
+          <ProductListItem modelNumber="11" price={1000} />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <ProductListItem />
+          <ProductListItem modelNumber="12" price={2000} />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <ProductListItem />
+          <ProductListItem modelNumber="13" price={3000} />
         </Grid>
       </Grid>
     </div>
