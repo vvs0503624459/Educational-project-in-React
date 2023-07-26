@@ -17,3 +17,23 @@
     font-weight: bold;
   }
 }
+.product-image {
+  margin-bottom: 15px;
+  text-align: center;
+  img {
+    height: 170px;
+    width: auto;
+  }
+}
+.btns-wrap {
+  display: flex;
+  justify-content: center;
+}
+.product-quantity {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  input {
+    text-align: center;
+  }
+}
