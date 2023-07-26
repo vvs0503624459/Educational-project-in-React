@@ -1,10 +1,4 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  imageListClasses,
-} from "@mui/material";
+import { Button, Card, CardContent, TextField } from "@mui/material";
 import "./ProductListItem.scss";
 type Props = {
   title: string;
@@ -21,6 +15,7 @@ const ProductListItem = ({
   type,
   capacity,
   price,
+  image,
 }: Props) => {
   return (
     <Card variant="outlined">
