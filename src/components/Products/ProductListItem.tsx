@@ -8,9 +8,29 @@ type Props = {
   capacity: string;
   price: number;
   image: string;
+  // count: number;
 };
 
-class ProductListItem extends Component<Props> {
+type State = {
+  count: number;
+};
+
+class ProductListItem extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      count: 2,
+    };
+    this.onIncrementClick = this.onIncrementClick.bind(this);
+  }
+
+  onIncrementClick() {
+    console.log(this);
+    this.setState({
+      count: 3,
+    });
+  }
+
   render() {
     const { title, description, type, capacity, price, image } = this.props;
     return (
@@ -28,8 +48,10 @@ class ProductListItem extends Component<Props> {
           </div>
           <div className="prodact-quantity">
             <Button variant="outlined">-</Button>
-            <TextField value="1" size="small"></TextField>
-            <Button variant="outlined">+</Button>
+            <TextField value={this.state.count} size="small"></TextField>
+            <Button variant="outlined" onClick={this.onIncrementClick}>
+              +
+            </Button>
           </div>
           <Button variant="outlined">Add to cart</Button>
         </CardContent>

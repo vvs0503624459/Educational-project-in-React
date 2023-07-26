@@ -1,5 +1,4 @@
 import { Grid, Typography } from "@mui/material";
-import ProductListitem from "./ProductListItem";
 import ProductListItem from "./ProductListItem";
 import productsArray from "utils/productsArray";
 
