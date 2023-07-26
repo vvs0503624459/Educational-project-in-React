@@ -20,8 +20,8 @@ const ProductListItem = ({
       <CardContent>
         <h2 className="product-title">{title}</h2>
         <p className="product-description">{description}</p>
-        <div className="product-features">{type}</div>
-        <div className="product-capacity">{capacity}</div>
+        <div className="product-features">Type: {type}</div>
+        <div className="product-capacity">Capacity: {capacity}</div>
         <div className="product-price">
           Price: <span>${price}</span>
         </div>
