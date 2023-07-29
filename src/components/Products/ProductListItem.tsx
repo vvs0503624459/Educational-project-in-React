@@ -19,7 +19,6 @@ const ProductListItem = ({
   image,
 }: Props) => {
   const [count, setCount] = useState<number>(1);
-
   const onIncrementClick = () => {
     setCount((prevState) => prevState + 1);
   };
@@ -35,11 +34,11 @@ const ProductListItem = ({
         <h2 className="product-title">{title}</h2>
         <p className="product-description">{description}</p>
         <div className="product-features">Type: {type}</div>
-        <div className="product-capacity">Capacity: {capacity}</div>
+        <div className="product-capacity">Capacity: {capacity} Gb</div>
         <div className="product-price">
           Price: <span>${price}</span>
         </div>
-        <div className="prodact-quantity">
+        <div className="product-quantity">
           <Button
             variant="outlined"
             onClick={onDecrementClick}

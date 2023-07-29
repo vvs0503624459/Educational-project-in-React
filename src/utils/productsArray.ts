@@ -1,5 +1,3 @@
-import { Url } from "url"
-
 type Product = {
     id: number
     title: string
@@ -18,7 +16,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 1000,
-        image:"./images/1.webp"
+        image:"images/1.webp"
 
     },
     {
@@ -28,7 +26,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 2000,
-        image:"./images/2.webp"
+        image:"images/2.webp"
     },
     {
         id: 3,
@@ -37,7 +35,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 3000,
-        image:"./images/3.webp"
+        image:"images/3.webp"
     },
     {
         id: 4,
@@ -46,7 +44,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 4000,
-        image:"./images/4.webp"
+        image:"images/4.webp"
     },
     {
         id: 5,
@@ -55,7 +53,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 5000,
-        image:"./images/5.webp"
+        image:"images/5.webp"
     },
     {
         id: 6,
@@ -64,7 +62,7 @@ const productsArray:Product[] = [
         type: 'phone',
         capacity: '64',
         price: 6000,
-        image:"./images/6.webp"
+        image:"images/6.webp"
     },
 ]
 export default productsArray

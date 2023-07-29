@@ -2,6 +2,7 @@ import Header from "../Header/Header";
 import CssBaseline from "@mui/material/CssBaseline";
 import { StyledEngineProvider } from "@mui/material/styles";
 import Main from "conteiner/Main/Main";
+import { useState } from "react";
 type Props = {};
 type CartDataProps = {
   totalCount: number;
