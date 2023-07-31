@@ -1,6 +1,7 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import "./ProductListItem.scss";
-import { Component } from "react";
+
+import { useState } from "react";
 type Props = {
   title: string;
   description: string;
@@ -8,64 +9,54 @@ type Props = {
   capacity: string;
   price: number;
   image: string;
-  // count: number;
+
 };
 
-type State = {
-  count: number;
-};
 
-class ProductListItem extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      count: 2,
-    };
-    this.onIncrementClick = this.onIncrementClick.bind(this);
-  }
+const ProductListItem = ({
+  title,
+  description,
+  type,
+  capacity,
+  price,
+  image,
+}: Props) => {
+  const [count, setCount] = useState<number>(1);
+  const onIncrementClick = () => {
+    setCount((prevState) => prevState + 1);
+  };
+  const onDecrementClick = () => {
+    setCount((prevState) => prevState - 1);
+  };
+  return (
+    <Card variant="outlined">
+      <CardContent>
+        <div className="product-image">
+          <img src={image} alt={title} />
+        </div>
+        <h2 className="product-title">{title}</h2>
+        <p className="product-description">{description}</p>
+        <div className="product-features">Type: {type}</div>
+        <div className="product-capacity">Capacity: {capacity} Gb</div>
+        <div className="product-price">
+          Price: <span>${price}</span>
+        </div>
+        <div className="product-quantity">
+          <Button
+            variant="outlined"
+            onClick={onDecrementClick}
+            disabled={count <= 1}
+          >
+            -
+          </Button>
+          <TextField value={count} size="small"></TextField>
+          <Button variant="outlined" onClick={onIncrementClick}>
+            +
+          </Button>
+        </div>
+        <Button variant="outlined">Add to cart</Button>
+      </CardContent>
+    </Card>
+  );
 
-  onIncrementClick() {
-    console.log(this);
-    this.setState({
-      count: 3,
-    });
-  }
-
-  render() {
-    const { title, description, type, capacity, price, image } = this.props;
-    return (
-      <Card variant="outlined">
-        <CardContent>
-          <div className="product-image">
-            <img src={image} alt={title} />
-          </div>
-          <h2 className="product-title">{title}</h2>
-          <p className="product-description">{description}</p>
-          <div className="product-features">Type: {type}</div>
-          <div className="product-capacity">Capacity: {capacity}</div>
-          <div className="product-price">
-            Price: <span>${price}</span>
-          </div>
-          <div className="prodact-quantity">
-            <Button variant="outlined">-</Button>
-            <TextField value={this.state.count} size="small"></TextField>
-            <Button variant="outlined" onClick={this.onIncrementClick}>
-              +
-            </Button>
-          </div>
-          <Button variant="outlined">Add to cart</Button>
-        </CardContent>
-      </Card>
-    );
-  }
-}
-
-// const ProductListItem = ({
-//   title,
-//   description,
-//   type,
-//   capacity,
-//   price,
-//   image,
-// }: Props) => {};
 export default ProductListItem;
