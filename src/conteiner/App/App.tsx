@@ -3,7 +3,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { StyledEngineProvider } from "@mui/material/styles";
 import Main from "conteiner/Main/Main";
 import { useState } from "react";
-import productsArray from "utils/productsArray";
 type Props = {};
 type ProductsInCartType = {
   [id: number]: number;
