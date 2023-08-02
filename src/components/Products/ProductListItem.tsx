@@ -1,6 +1,5 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import "./ProductListItem.scss";
-
 import { useState } from "react";
 type Props = {
   id: number;
@@ -12,7 +11,6 @@ type Props = {
   image: string;
   addProductToCart: (id: number, count: number) => void;
 };
-
 
 const ProductListItem = ({
   id,
@@ -63,5 +61,5 @@ const ProductListItem = ({
       </CardContent>
     </Card>
   );
-
+};
 export default ProductListItem;
