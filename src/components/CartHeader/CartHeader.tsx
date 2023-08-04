@@ -29,7 +29,7 @@ const CartHeader = ({ productsInCart }: Props) => {
             productsObject[parseInt(productId)].price *
               productsInCart[parseInt(productId)],
           0
-        )}{" "}
+        )}
       </div>
     </div>
   );
