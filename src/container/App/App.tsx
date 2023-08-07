@@ -5,6 +5,10 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Container } from "@mui/material";
 import Home from "pages/Home/Home";
+
+import AboutUS from "pages/AboutUs/AboutUS";
+import Shipment from "pages/Shipment/Shipment";
+import Payment from "pages/Payment/Payment";
 import CartPage from "pages/Cart/CartPage";
 type Props = {};
 type ProductsInCartType = {
@@ -33,7 +37,13 @@ const App = (props: Props) => {
             path="/"
             element={<Home addProductToCart={addProductToCart} />}
           />
-          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/cart"
+            element={<CartPage productsInCart={productsInCart} />}
+          />
+          <Route path="/about-us" element={<AboutUS />} />
+          <Route path="/shipmet" element={<Shipment />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Container>
     </StyledEngineProvider>
