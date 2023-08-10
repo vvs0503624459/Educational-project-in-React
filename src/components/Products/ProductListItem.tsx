@@ -1,6 +1,7 @@
-import { Button, Card, CardContent, TextField } from "@mui/material";
+import { Button, Card, CardContent } from "@mui/material";
 import "./ProductListItem.scss";
 import { useState } from "react";
+import Quantity from "components/Quantity/Quantity";
 type Props = {
   id: number;
   title: string;
@@ -42,19 +43,13 @@ const ProductListItem = ({
         <div className="product-price">
           Price: <span>${price}</span>
         </div>
-        <div className="product-quantity">
-          <Button
-            variant="outlined"
-            onClick={onDecrementClick}
-            disabled={count <= 1}
-          >
-            -
-          </Button>
-          <TextField value={count} size="small"></TextField>
-          <Button variant="outlined" onClick={onIncrementClick}>
-            +
-          </Button>
-        </div>
+
+        <Quantity
+          count={count}
+          onIncrementClick={onIncrementClick}
+          onDecrementClick={onDecrementClick}
+        />
+
         <Button variant="outlined" onClick={() => addProductToCart(id, count)}>
           Add to cart
         </Button>
