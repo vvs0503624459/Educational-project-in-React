@@ -48,6 +48,7 @@ const ProductListItem = ({
           count={count}
           onIncrementClick={onIncrementClick}
           onDecrementClick={onDecrementClick}
+          minCount={1}
         />
 
         <Button variant="outlined" onClick={() => addProductToCart(id, count)}>

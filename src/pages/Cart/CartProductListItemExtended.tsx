@@ -5,6 +5,7 @@ import Quantity from "components/Quantity/Quantity";
 type Props = {
   product: Product;
   productCount: number;
+  minCount: number;
   removeProductFromCart: (id: number) => void;
   changeProductQuantity: (id: number, count: number) => void;
 };
@@ -14,6 +15,7 @@ const CartProductListItemExtended = ({
   productCount,
   removeProductFromCart,
   changeProductQuantity,
+  minCount,
 }: Props) => {
   return (
     <Grid item xs={12} sm={4}>
@@ -29,13 +31,18 @@ const CartProductListItemExtended = ({
           </div>
           <div className="product-features">Count: {productCount}</div>
           <Quantity
+            minCount={0}
             count={productCount}
             onIncrementClick={() =>
               changeProductQuantity(product.id, productCount + 1)
             }
-            onDecrementClick={() =>
-              changeProductQuantity(product.id, productCount - 1)
-            }
+            onDecrementClick={() => {
+              if (productCount <= 1) {
+                removeProductFromCart(product.id);
+              } else {
+                changeProductQuantity(product.id, productCount - 1);
+              }
+            }}
           />
           <Button
             variant="outlined"
