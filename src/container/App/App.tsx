@@ -11,6 +11,7 @@ import Shipment from "pages/Shipment/Shipment";
 import Payment from "pages/Payment/Payment";
 import CartPage from "pages/Cart/CartPage";
 import { omit } from "lodash";
+import Reviews from "components/Reviews/Reviews";
 type Props = {};
 type ProductsInCartType = {
   [id: number]: number;
@@ -47,6 +48,7 @@ const App = (props: Props) => {
             path="/"
             element={<Home addProductToCart={addProductToCart} />}
           />
+
           <Route
             path="/cart"
             element={
@@ -62,6 +64,7 @@ const App = (props: Props) => {
           <Route path="/payment" element={<Payment />} />
         </Routes>
       </Container>
+      <Reviews />
     </StyledEngineProvider>
   );
 };
