@@ -13,7 +13,7 @@ type Props = {
   price: number;
   image: string;
   addProductToCart: (id: number, count: number) => void;
-  isLiked: true;
+  isLiked?: boolean;
 };
 
 const ProductListItem = ({
