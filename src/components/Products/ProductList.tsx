@@ -21,6 +21,7 @@ const ProductList = ({ addProductToCart }: Props) => {
         Product List
       </Typography>
       <Grid container spacing={4}>
+        {/* {productsArray.filter(({category}) => category==="sport").map( */}
         {productsArray.map(
           ({ id, title, description, type, capacity, price, image }) => (
             <Grid item xs={12} sm={6} md={4} key={id}>
