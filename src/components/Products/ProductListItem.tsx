@@ -35,17 +35,20 @@ const ProductListItem = ({
   };
   const isLiked = useAppSelector((state) => state.productsLikeState[id]);
   const dispatch = useAppDispatch();
+
   return (
     <Card variant="outlined">
       <CardContent>
         <Button
           variant="outlined"
           onClick={() => {
-            if (isLiked) {
-              dispatch({ type: "REMOVE_LIKE", id });
-            } else {
-              dispatch({ type: "ADD_LIKE", id });
-            }
+            // if (isLiked) {
+            //   dispatch({ type: "REMOVE_LIKE", id });
+            // } else {
+            //   dispatch({ type: "ADD_LIKE", id });
+            // }
+
+            dispatch({ type: "toggle_like", id });
           }}
         >
           {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}

@@ -9,21 +9,30 @@ const initialState: State = {
     2 : true,
 }
 const likeReducer = (state = initialState, action: AnyAction ) => {
+//   switch (action.type) {
+//     case "ADD_LIKE":
+//       return {
+//         ...state,
+//         [action.id]:true,
+//       }
+//     case "REMOVE_LIKE":
+//       return {
+//         ...state,
+//         [action.id]:false,
+//       }
+//     default:
+//       return state
+// }
   switch (action.type) {
-    case "ADD_LIKE":
+    case "toggle_like":
       return {
         ...state,
-        [action.id]:true,
+        [action.id]:!state[action.id],
       }
-    case "REMOVE_LIKE":
-      return {
-        ...state,
-        [action.id]:false,
-      }
+ 
     default:
       return state
 }
- 
 }
 
 export default likeReducer
