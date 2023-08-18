@@ -1,6 +1,10 @@
-import { Button, Card, CardContent, TextField } from "@mui/material";
+import { Button, Card, CardContent } from "@mui/material";
 import "./ProductListItem.scss";
 import { useState } from "react";
+import Quantity from "components/Quantity/Quantity";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 type Props = {
   id: number;
   title: string;
@@ -29,9 +33,26 @@ const ProductListItem = ({
   const onDecrementClick = () => {
     setCount((prevState) => prevState - 1);
   };
+  const isLiked = useAppSelector((state) => state.productsLikeState[id]);
+  const dispatch = useAppDispatch();
+
   return (
     <Card variant="outlined">
       <CardContent>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            // if (isLiked) {
+            //   dispatch({ type: "REMOVE_LIKE", id });
+            // } else {
+            //   dispatch({ type: "ADD_LIKE", id });
+            // }
+
+            dispatch({ type: "toggle_like", id });
+          }}
+        >
+          {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </Button>
         <div className="product-image">
           <img src={image} alt={title} />
         </div>
@@ -42,19 +63,14 @@ const ProductListItem = ({
         <div className="product-price">
           Price: <span>${price}</span>
         </div>
-        <div className="product-quantity">
-          <Button
-            variant="outlined"
-            onClick={onDecrementClick}
-            disabled={count <= 1}
-          >
-            -
-          </Button>
-          <TextField value={count} size="small"></TextField>
-          <Button variant="outlined" onClick={onIncrementClick}>
-            +
-          </Button>
-        </div>
+
+        <Quantity
+          count={count}
+          onIncrementClick={onIncrementClick}
+          onDecrementClick={onDecrementClick}
+          minCount={1}
+        />
+
         <Button variant="outlined" onClick={() => addProductToCart(id, count)}>
           Add to cart
         </Button>
