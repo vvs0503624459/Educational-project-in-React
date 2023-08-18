@@ -4,7 +4,7 @@ import { useState } from "react";
 import Quantity from "components/Quantity/Quantity";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useAppSelector } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 type Props = {
   id: number;
   title: string;
@@ -34,11 +34,20 @@ const ProductListItem = ({
     setCount((prevState) => prevState - 1);
   };
   const isLiked = useAppSelector((state) => state.productsLikeState[id]);
-  console.log(isLiked);
+  const dispatch = useAppDispatch();
   return (
     <Card variant="outlined">
       <CardContent>
-        <Button variant="outlined">
+        <Button
+          variant="outlined"
+          onClick={() => {
+            if (isLiked) {
+              dispatch({ type: "REMOVE_LIKE", id });
+            } else {
+              dispatch({ type: "ADD_LIKE", id });
+            }
+          }}
+        >
           {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
         <div className="product-image">
