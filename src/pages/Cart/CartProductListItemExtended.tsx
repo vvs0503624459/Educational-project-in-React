@@ -30,9 +30,7 @@ const CartProductListItemExtended = ({
         <CardContent>
           <Button
             variant="outlined"
-            onClick={() => {
-              dispatch({ type: "toggle_like", id: product.id });
-            }}
+            onClick={() => dispatch({ type: "toggle_like", id: product.id })}
           >
             {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </Button>
