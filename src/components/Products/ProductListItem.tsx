@@ -5,6 +5,8 @@ import Quantity from "components/Quantity/Quantity";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { addLike, removeLike } from "redux/likeReducer";
+
 type Props = {
   id: number;
   title: string;
@@ -41,15 +43,18 @@ const ProductListItem = ({
       <CardContent>
         <Button
           variant="outlined"
-          onClick={() => {
-            // if (isLiked) {
-            //   dispatch({ type: "REMOVE_LIKE", id });
-            // } else {
-            //   dispatch({ type: "ADD_LIKE", id });
-            // }
+          onClick={
+            () => {
+              // if (isLiked) {
+              //   dispatch({ type: "REMOVE_LIKE", id });
+              // } else {
+              //   dispatch({ type: "ADD_LIKE", id });
+              // }
+              isLiked ? dispatch(removeLike(id)) : dispatch(addLike(id));
+            }
 
-            dispatch({ type: "toggle_like", id });
-          }}
+            // dispatch({ type: "toggle_like", id });
+          }
         >
           {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
