@@ -47,13 +47,25 @@ const CartProductListItemExtended = ({
             minCount={0}
             count={productCount}
             onIncrementClick={() =>
-              changeProductQuantity(product.id, productCount + 1)
+              // changeProductQuantity(product.id, productCount + 1)
+              dispatch({
+                type: "change_products_in_cart",
+                id: product.id,
+                count: productCount + 1,
+              })
             }
             onDecrementClick={() => {
               if (productCount <= 1) {
-                removeProductFromCart(product.id);
+                dispatch({
+                  type: "remove_from_cart",
+                  id: product.id,
+                });
               } else {
-                changeProductQuantity(product.id, productCount - 1);
+                dispatch({
+                  type: "change_products_in_cart",
+                  id: product.id,
+                  count: productCount - 1,
+                });
               }
             }}
           />

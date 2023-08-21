@@ -17,7 +17,12 @@ const cartReducer = (state = initialState, action: AnyAction) => {
                 [action.id]: (state[action.id] || 0) + action.count,
             }
             case "remove_from_cart":
-                return omit(state,[action.id])
+            return omit(state, [action.id])
+            case "change_products_in_cart":
+                return {
+                    ...state,
+                    [action.id]: action.count,
+                }
         default:
             return state
     }
