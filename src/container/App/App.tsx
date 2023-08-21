@@ -53,7 +53,6 @@ const App = (props: Props) => {
             path="/cart"
             element={
               <CartPage
-                productsInCart={productsInCart}
                 removeProductFromCart={removeProductFromCart}
                 changeProductQuantity={changeProductQuantity}
               />

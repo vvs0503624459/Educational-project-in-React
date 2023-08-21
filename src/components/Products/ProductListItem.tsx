@@ -78,7 +78,11 @@ const ProductListItem = ({
           minCount={1}
         />
 
-        <Button variant="outlined" onClick={() => addProductToCart(id, count)}>
+        {/* <Button variant="outlined" onClick={() => addProductToCart(id, count)}> */}
+        <Button
+          variant="outlined"
+          onClick={() => dispatch({ type: "add_to_cart", id, count })}
+        >
           Add to cart
         </Button>
       </CardContent>
