@@ -59,7 +59,10 @@ const CartProductListItemExtended = ({
           />
           <Button
             variant="outlined"
-            onClick={() => removeProductFromCart(product.id)}
+            // onClick={() => removeProductFromCart(product.id)}
+            onClick={() =>
+              dispatch({ type: "remove_from_cart", id: product.id })
+            }
           >
             <DeleteIcon />
             Remove
