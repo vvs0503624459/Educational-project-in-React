@@ -14,17 +14,22 @@ export const likeReducer = createSlice({
   name: "like",
   initialState,
   reducers: {
-    addLike: (state, action) => ({
+    // addLike: (state, action) => ({
+    //   ...state,
+    //   [action.payload]: true,
+    // }),
+    // removeLike: (state, action) => ({
+    //   ...state,
+    //   [action.payload]: false,
+    // })
+    toggleLike: (state, action) => ({
       ...state,
-      [action.payload]: true,
-    }),
-    removeLike: (state, action) => ({
-      ...state,
-      [action.payload]: false,
+      [action.payload]: !state[action.payload],
     })
   },
 })
-export const {addLike, removeLike} = likeReducer.actions
+// export const {addLike, removeLike} = likeReducer.actions
+export const {toggleLike} = likeReducer.actions
 // const likeReducer = (state = initialState, action: AnyAction ) => {
 //   switch (action.type) {
 //     case "ADD_LIKE":
