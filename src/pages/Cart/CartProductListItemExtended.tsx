@@ -5,13 +5,14 @@ import Quantity from "components/Quantity/Quantity";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { changeProductQuantity, removeProductFromCart } from "redux/cartReducer";
 type Props = {
   product: Product;
   productCount: number;
   minCount: number;
-  removeProductFromCart: (id: number) => void;
-  changeProductQuantity: (id: number, count: number) => void;
-};
+//   removeProductFromCart: (id: number) => void;
+//   changeProductQuantity: (id: number, count: number) => void;
+// };
 
 const CartProductListItemExtended = ({
   product,
@@ -48,24 +49,17 @@ const CartProductListItemExtended = ({
             count={productCount}
             onIncrementClick={() =>
               // changeProductQuantity(product.id, productCount + 1)
-              dispatch({
-                type: "change_products_in_cart",
-                id: product.id,
+              dispatch(changeProductQuantity({ id: product.id,
                 count: productCount + 1,
-              })
+              }))
             }
             onDecrementClick={() => {
-              if (productCount <= 1) {
-                dispatch({
-                  type: "remove_from_cart",
-                  id: product.id,
-                });
-              } else {
-                dispatch({
-                  type: "change_products_in_cart",
-                  id: product.id,
+              iproductCount <= 1 ?
+                dispatch(removeProductFromCart({ id: product.id }))
+              
+                :dispatch(changeProductQuantity({ id: product.id,
                   count: productCount - 1,
-                });
+                }));
               }
             }}
           />
@@ -73,7 +67,7 @@ const CartProductListItemExtended = ({
             variant="outlined"
             // onClick={() => removeProductFromCart(product.id)}
             onClick={() =>
-              dispatch({ type: "remove_from_cart", id: product.id })
+              dispatch(removeProductFromCart({ id: product.id }))
             }
           >
             <DeleteIcon />
