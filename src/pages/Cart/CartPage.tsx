@@ -3,6 +3,7 @@ import CartTotal from "./CartTotal";
 import CartProductList from "./CartProductList";
 import CartProductListItemExtended from "./CartProductListItemExtended";
 import { useAppSelector } from "redux/hooks";
+import { Link } from "react-router-dom";
 type Props = {
   removeProductFromCart: (id: number) => void;
   changeProductQuantity: (id: number, count: number) => void;
@@ -26,6 +27,7 @@ const CartPage = ({ removeProductFromCart, changeProductQuantity }: Props) => {
         </Grid>
 
         <CartTotal productsInCart={productsInCart} />
+        <Link to="/checkout">Proceed to checkout</Link>
       </div>
     </div>
   );

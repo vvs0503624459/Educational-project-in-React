@@ -87,7 +87,7 @@ const Reviews = (props: Props) => {
         <div>
           <TextareaAutosize
             minRows={5}
-            placeholder="Your name"
+            placeholder="Your review"
             value={newReview.text}
             onChange={handleText}
           />

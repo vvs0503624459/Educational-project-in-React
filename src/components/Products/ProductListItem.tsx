@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "redux/hooks";
 // import { addLike, removeLike, toggleLike } from "redux/likeReducer";
 import { toggleLike } from "redux/likeReducer";
 import { addProductToCart } from "redux/cartReducer";
+import { Link } from "react-router-dom";
 
 type Props = {
   id: number;
@@ -27,9 +28,9 @@ const ProductListItem = ({
   type,
   capacity,
   price,
+  // addProductToCart,
   image,
-} // addProductToCart,
-: Props) => {
+}: Props) => {
   const [count, setCount] = useState<number>(1);
   const onIncrementClick = () => {
     setCount((prevState) => prevState + 1);
@@ -64,7 +65,9 @@ const ProductListItem = ({
         <div className="product-image">
           <img src={image} alt={title} />
         </div>
-        <h2 className="product-title">{title}</h2>
+        <h2 className="product-title">
+          <Link to={`/products/${id}`}>{title}</Link>
+        </h2>
         <p className="product-description">{description}</p>
         <div className="product-features">Type: {type}</div>
         <div className="product-capacity">Capacity: {capacity} Gb</div>

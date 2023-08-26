@@ -21,9 +21,9 @@ export const cartReducer = createSlice({
             [action.payload.id]:
                 (state[action.payload.id] || 0) + action.payload.count,
         }),
-        removeProductFromCart: (state, action) => ({
-          return omit(state,  action.payload.id)
-}),
+        removeProductFromCart: (state, action) => {
+          return  omit(state,  action.payload.id)
+},
         changeProductQuantity: (state, action) => ({
             ...state,
             [action.payload.id]: action.payload.count,
