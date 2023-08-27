@@ -13,6 +13,7 @@ type ProductsObjectType = {
 
 const ProductPage = (props: Props) => {
   const { id } = useParams();
+  const productsArray = useAppSelector((state) => state.products);
   const productsObject: ProductsObjectType = getProductsObject(productsArray);
   const isLiked = useAppSelector(
     (state) => state.productsLikeState[parseInt(id!)]
