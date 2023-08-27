@@ -9,12 +9,8 @@ import Logo from "components/Logo/Logo";
 import Menu from "components/Menu/Menu";
 import CartHeader from "components/CartHeader/CartHeader";
 
-type Props = {
-  productsInCart: {
-    [id: number]: number;
-  };
-};
-const Header = ({ productsInCart }: Props) => {
+type Props = {};
+const Header = (props: Props) => {
   return (
     <AppBar className="header-appbar" position="static">
       <Container>
@@ -32,7 +28,6 @@ const Header = ({ productsInCart }: Props) => {
             <Logo />
           </Typography>
           <Menu />
-          {/* <CartHeader productsInCart={productsInCart} /> */}
           <CartHeader />
         </Toolbar>
       </Container>

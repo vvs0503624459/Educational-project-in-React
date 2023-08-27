@@ -16,38 +16,17 @@ import { fetchProducts } from "redux/productsReducer";
 import { useAppDispatch } from "redux/hooks";
 
 type Props = {};
-type ProductsInCartType = {
-  [id: number]: number;
-};
 
 const App = (props: Props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
-    1: 1,
-    2: 3,
-  });
-  // const addProductToCart = (id: number, count: number) => {
-  //   setProductsInCart((prevState) => ({
-  //     ...prevState,
-  //     [id]: (prevState[id] || 0) + count,
-  //   }));
-  // };
-  const removeProductFromCart = (id: number) => {
-    setProductsInCart((prevState) => omit(prevState, [id]));
-  };
-  const changeProductQuantity = (id: number, count: number) =>
-    setProductsInCart((prevState) => ({
-      ...prevState,
-      [id]: count,
-    }));
 
   return (
     <StyledEngineProvider injectFirst>
       <CssBaseline />
-      <Header productsInCart={productsInCart} />
+      <Header />
       {/* <button onClick={() => removeProductFromCart(1)}>Delete from cart</button> */}
       <Container>
         <Routes>
@@ -57,15 +36,7 @@ const App = (props: Props) => {
           /> */}
           <Route path="/" element={<Home />} />
 
-          <Route
-            path="/cart"
-            element={
-              <CartPage
-                removeProductFromCart={removeProductFromCart}
-                changeProductQuantity={changeProductQuantity}
-              />
-            }
-          />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/about-us" element={<AboutUS />} />
           <Route path="/shipmet" element={<Shipment />} />
           <Route path="/payment" element={<Payment />} />
