@@ -1,7 +1,7 @@
 import CartTotal from "pages/Cart/CartTotal";
 
 import CartProductList from "pages/Cart/CartProductList";
-import { useAppSelector } from "redux/hooks";
+// import { useAppSelector } from "redux/hooks";
 type Props = {};
 // type Props = {
 //   productsInCart: {
@@ -9,12 +9,14 @@ type Props = {};
 //   };
 // };
 
-const CartHeader = ({}: Props) => {
-  const productsInCart = useAppSelector((state) => state.productsInCart);
+const CartHeader = (props: Props) => {
+  // const productsInCart = useAppSelector((state) => state.productsInCart);
   return (
     <div>
-      <CartProductList productsInCart={productsInCart} />
-      <CartTotal productsInCart={productsInCart} />
+      {/* <CartProductList productsInCart={productsInCart} /> */}
+      <CartProductList />
+      {/* <CartTotal productsInCart={productsInCart} /> */}
+      <CartTotal />
     </div>
   );
 };

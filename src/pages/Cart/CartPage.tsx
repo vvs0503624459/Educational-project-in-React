@@ -19,14 +19,15 @@ const CartPage = ({ removeProductFromCart, changeProductQuantity }: Props) => {
       <div>
         <Grid container spacing={4}>
           <CartProductList
-            productsInCart={productsInCart}
+            // productsInCart={productsInCart}
             CartItem={CartProductListItemExtended}
             removeProductFromCart={removeProductFromCart}
             changeProductQuantity={changeProductQuantity}
           />
         </Grid>
 
-        <CartTotal productsInCart={productsInCart} />
+        {/* <CartTotal productsInCart={productsInCart} /> */}
+        <CartTotal />
         <Link to="/checkout">Proceed to checkout</Link>
       </div>
     </div>

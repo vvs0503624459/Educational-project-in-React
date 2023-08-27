@@ -1,23 +1,21 @@
-import productsArray, { Product, getProductsObject } from "utils/productsArray";
-type Props = {
-  productsInCart: {
-    [id: number]: number;
-  };
-};
+import { useAppSelector } from "redux/hooks";
+import { Product, getProductsObject } from "utils/productsArray";
+type Props = {};
 type ProductsObjectType = {
   [id: number]: Product;
 };
 
-const CartTotal = ({ productsInCart }: Props) => {
+const CartTotal = (props: Props) => {
+  const productsArray = useAppSelector((state) => state.products);
   const productsObject: ProductsObjectType = getProductsObject(productsArray);
+  const productsInCart = useAppSelector((state) => state.productsInCart);
   return (
     <div>
       Total: ${" "}
       {Object.keys(productsInCart).reduce(
-        (total, productId) =>
+        (total, id) =>
           total +
-          productsObject[parseInt(productId)].price *
-            productsInCart[parseInt(productId)],
+          productsObject[parseInt(id!)].price * productsInCart[parseInt(id!)],
         0
       )}
     </div>
