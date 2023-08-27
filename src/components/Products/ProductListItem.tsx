@@ -5,6 +5,11 @@ import Quantity from "components/Quantity/Quantity";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
+// import { addLike, removeLike, toggleLike } from "redux/likeReducer";
+import { toggleLike } from "redux/likeReducer";
+import { addProductToCart } from "redux/cartReducer";
+import { Link } from "react-router-dom";
+
 type Props = {
   id: number;
   title: string;
@@ -13,7 +18,7 @@ type Props = {
   capacity: string;
   price: number;
   image: string;
-  addProductToCart: (id: number, count: number) => void;
+  // addProductToCart: (id: number, count: number) => void;
 };
 
 const ProductListItem = ({
@@ -23,8 +28,8 @@ const ProductListItem = ({
   type,
   capacity,
   price,
+  // addProductToCart,
   image,
-  addProductToCart,
 }: Props) => {
   const [count, setCount] = useState<number>(1);
   const onIncrementClick = () => {
@@ -41,22 +46,28 @@ const ProductListItem = ({
       <CardContent>
         <Button
           variant="outlined"
-          onClick={() => {
-            // if (isLiked) {
-            //   dispatch({ type: "REMOVE_LIKE", id });
-            // } else {
-            //   dispatch({ type: "ADD_LIKE", id });
-            // }
+          onClick={
+            () => {
+              // if (isLiked) {
+              //   dispatch({ type: "REMOVE_LIKE", id });
+              // } else {
+              //   dispatch({ type: "ADD_LIKE", id });
+              // }
+              // isLiked ? dispatch(removeLike(id)) : dispatch(addLike(id));
+              dispatch(toggleLike(id));
+            }
 
-            dispatch({ type: "toggle_like", id });
-          }}
+            // dispatch({ type: "toggle_like", id });
+          }
         >
           {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
         <div className="product-image">
           <img src={image} alt={title} />
         </div>
-        <h2 className="product-title">{title}</h2>
+        <h2 className="product-title">
+          <Link to={`/products/${id}`}>{title}</Link>
+        </h2>
         <p className="product-description">{description}</p>
         <div className="product-features">Type: {type}</div>
         <div className="product-capacity">Capacity: {capacity} Gb</div>
@@ -71,7 +82,12 @@ const ProductListItem = ({
           minCount={1}
         />
 
-        <Button variant="outlined" onClick={() => addProductToCart(id, count)}>
+        {/* <Button variant="outlined" onClick={() => addProductToCart(id, count)}> */}
+        <Button
+          variant="outlined"
+          // onClick={() => dispatch({ type: "add_to_cart", id, count })}
+          onClick={() => dispatch(addProductToCart({ id, count }))}
+        >
           Add to cart
         </Button>
       </CardContent>

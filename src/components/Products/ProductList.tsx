@@ -1,12 +1,15 @@
 import { Grid, Typography } from "@mui/material";
 import ProductListItem from "./ProductListItem";
-import productsArray from "utils/productsArray";
+// import productsArray from "utils/productsArray";
+import { useAppSelector } from "redux/hooks";
 
 type Props = {
-  addProductToCart: (id: number, count: number) => void;
+  // addProductToCart: (id: number, count: number) => void;
 };
 
-const ProductList = ({ addProductToCart }: Props) => {
+// const ProductList = ({ addProductToCart }: Props) => {
+const ProductList = (props: Props) => {
+  const productsArray = useAppSelector((state) => state.products);
   return (
     <div>
       <Typography
@@ -33,7 +36,7 @@ const ProductList = ({ addProductToCart }: Props) => {
                 capacity={capacity}
                 price={price}
                 image={image}
-                addProductToCart={addProductToCart}
+                // addProductToCart={addProductToCart}
               />
             </Grid>
           )
