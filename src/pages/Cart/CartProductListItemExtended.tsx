@@ -13,7 +13,7 @@ import { toggleLike } from "redux/likeReducer";
 type Props = {
   product: Product;
   productCount: number;
-  minCount: number;
+  // minCount: number;
   //   removeProductFromCart: (id: number) => void;
   //   changeProductQuantity: (id: number, count: number) => void;
 };
@@ -21,11 +21,11 @@ type Props = {
 const CartProductListItemExtended = ({
   product,
   productCount, // removeProductFromCart,
-} // changeProductQuantity,
-// minCount,
+  // changeProductQuantity,
+} // minCount,
 : Props) => {
   const isLiked = useAppSelector(
-    (state) => state.productsLikeState[product.id]
+    (state) => state.productsLikeState[product?.id]
   );
   const dispatch = useAppDispatch();
   return (
@@ -35,38 +35,38 @@ const CartProductListItemExtended = ({
           <Button
             variant="outlined"
             onClick={() => {
-              dispatch(toggleLike(product.id));
+              dispatch(toggleLike(product?.id));
             }}
           >
             {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </Button>
           <div className="product-image">
-            <img src={product.image} alt="" />
+            <img src={product?.image} alt="" />
           </div>
-          <div className="product-title">{product.title}</div>
-          <div className="product-description">{product.description}</div>
+          <div className="product-title">{product?.title}</div>
+          <div className="product-description">{product?.description}</div>
           <div className="product-description product-features">
-            Price for one item: ${product.price}
+            Price for one item: ${product?.price}
           </div>
           <div className="product-features">Count: {productCount}</div>
           <Quantity
             minCount={0}
             count={productCount}
             onIncrementClick={() =>
-              // changeProductQuantity(product.id, productCount + 1)
+              // changeProductQuantity(product?.id, productCount + 1)
               dispatch(
                 changeProductQuantity({
-                  id: product.id,
+                  id: product?.id,
                   count: productCount + 1,
                 })
               )
             }
             onDecrementClick={() => {
               productCount <= 1
-                ? dispatch(removeProductFromCart({ id: product.id }))
+                ? dispatch(removeProductFromCart({ id: product?.id }))
                 : dispatch(
                     changeProductQuantity({
-                      id: product.id,
+                      id: product?.id,
                       count: productCount - 1,
                     })
                   );
@@ -74,8 +74,8 @@ const CartProductListItemExtended = ({
           />
           <Button
             variant="outlined"
-            // onClick={() => removeProductFromCart(product.id)}
-            onClick={() => dispatch(removeProductFromCart({ id: product.id }))}
+            // onClick={() => removeProductFromCart(product?.id)}
+            onClick={() => dispatch(removeProductFromCart({ id: product?.id }))}
           >
             <DeleteIcon />
             Remove

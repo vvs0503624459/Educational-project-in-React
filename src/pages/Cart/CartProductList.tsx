@@ -4,27 +4,25 @@ import CartProductListItem from "./CartProductListItem";
 import { useAppSelector } from "redux/hooks";
 
 type Props = {
-  productsInCart: {
-    [id: number]: number;
-  };
   CartItem?: any;
 };
 type ProductsObjectType = {
   [id: number]: Product;
 };
 
-const CartProductList = ({
-  productsInCart,
-  CartItem = CartProductListItem,
-}: Props) => {
-  const productsArray = useAppSelector((state) => state.products);
-  const productsObject: ProductsObjectType = getProductsObject(productsArray);
-
+const CartProductList = ({ CartItem = CartProductListItem }: Props) => {
+  const productsInCart = useAppSelector((state) => state.productsInCart);
+  const productsObject: ProductsObjectType = getProductsObject(
+    useAppSelector((state) => state.products)
+  );
+  // const test = getProductsObject(productsArray);
+  // console.log(test);
   return (
     <>
       {Object.keys(productsInCart).map((id) => (
         <CartItem
-          key={productsObject[parseInt(id!)]}
+          // key={productsObject[parseInt(id!)]}
+          key={parseInt(id!)}
           product={productsObject[parseInt(id!)]}
           productCount={productsInCart[parseInt(id!)]}
         />

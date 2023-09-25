@@ -1,38 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 import { omit } from "lodash";
 
 type CartState = {
-    [id:number]:number
-}
+  [id: number]: number;
+};
 const initialState: CartState = {
-    1 : 5,
-    2 : 5,
-}
+  1: 5,
+  2: 3,
+};
 export const cartReducer = createSlice({
-    name: "cart",
-    initialState,
-    reducers: {
-        // addProductToCart:(state, action) => ({
-        //     ...state,
-        //     [action.payload["id"]]: (state[action.payload["id"]] || 0) + Number(action.payload["count"]),
-        // }),
-        addProductToCart: (state, action) => ({
-            ...state,
-            [action.payload.id]:
-                (state[action.payload.id] || 0) + action.payload.count,
-        }),
-        removeProductFromCart: (state, action) => {
-          return  omit(state,  action.payload.id)
-},
-        changeProductQuantity: (state, action) => ({
-            ...state,
-            [action.payload.id]: action.payload.count,
-}),
-
-    }
-})
-export const {addProductToCart,removeProductFromCart, changeProductQuantity } = cartReducer.actions
-export default cartReducer.reducer
+  name: "cart",
+  initialState,
+  reducers: {
+    // addProductToCart:(state, action) => ({
+    //     ...state,
+    //     [action.payload["id"]]: (state[action.payload["id"]] || 0) + Number(action.payload["count"]),
+    // }),
+    addProductToCart: (state, action) => ({
+      ...state,
+      [action.payload.id]:
+        (state[action.payload.id] || 0) + action.payload.count,
+    }),
+    removeProductFromCart: (state, action) => {
+      return omit(state, action.payload.id);
+    },
+    changeProductQuantity: (state, action) => ({
+      ...state,
+      [action.payload.id]: action.payload.count,
+    }),
+  },
+});
+export const {
+  addProductToCart,
+  removeProductFromCart,
+  changeProductQuantity,
+} = cartReducer.actions;
+export default cartReducer.reducer;
 // const cartReducer = (state = initialState, action: AnyAction) => {
 
 //     switch (action.type) {
@@ -53,4 +56,4 @@ export default cartReducer.reducer
 //     }
 // }
 
-    // export default cartReducer
+// export default cartReducer

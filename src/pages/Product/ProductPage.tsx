@@ -1,6 +1,7 @@
 import { Button, Card, CardContent } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Product, getProductsObject } from "utils/productsArray";
+// import { Product } from "utils/productsArray";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
@@ -13,8 +14,10 @@ type ProductsObjectType = {
 
 const ProductPage = (props: Props) => {
   const { id } = useParams();
-  const productsArray = useAppSelector((state) => state.products);
-  const productsObject: ProductsObjectType = getProductsObject(productsArray);
+
+  const productsObject: ProductsObjectType = getProductsObject(
+    useAppSelector((state) => state.products)
+  );
   const isLiked = useAppSelector(
     (state) => state.productsLikeState[parseInt(id!)]
   );

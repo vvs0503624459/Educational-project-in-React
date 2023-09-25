@@ -18,7 +18,8 @@ const App = (props: Props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch(fetchProducts())]);
+    // }, [dispatch(fetchProducts())]);
+  }, []);
 
   return (
     <StyledEngineProvider injectFirst>
